@@ -3,7 +3,7 @@
   <div class="converter">
     <!-- ERROR MESSAGE -->
     <div class="errorMsg" :class="error ? 'show' : ''">
-      Preencha todos os campos
+      Please fill in all the required fields
     </div>
     <!-- CURRENCY A INPUT -->
     <label for="inputCur">Type how much you'd like to convert</label>
