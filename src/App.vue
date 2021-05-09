@@ -1,26 +1,63 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <main>
+    <img src="./assets/currency.svg" width="60" alt="">
+    <h2 class="header">Currency Converter</h2>
+    <Converter />
+  </main>
+  <footer>
+    <a href="https://mhelena.com.br" target="_blank"
+      >Developed and Designed by Helena Martins</a
+    >
+  </footer>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Converter from "./components/Converter.vue";
 
 export default {
-  name: 'App',
+  name: "app",
   components: {
-    HelloWorld
-  }
-}
+    Converter,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+body {
+  background: #db2e6d;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+main {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header{
+  color: #fff;
+  font-weight: 300;
+}
+
+footer {
+  height: 30px;
+  background: rgba(0, 0, 0, 0.5);
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  padding: 15px 0;
+}
+
+footer a {
+  color: #fff;
+  transition: all 0.5s;
+  font-size: 13px;
+}
+
+footer a:hover {
+  color: #F09A13;
 }
 </style>
