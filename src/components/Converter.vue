@@ -12,7 +12,7 @@
       id="inputCur"
       @focus="setError(false)"
       @change="currencyA.id && currencyB.id && currencyA.value && convert()"
-      type="text"
+      type="number"
       v-model="currencyA.value"
     />
     <!-- SELECT CURRENCY A -->
