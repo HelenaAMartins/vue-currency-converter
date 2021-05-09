@@ -12,7 +12,8 @@
       id="inputCur"
       @focus="setError(false)"
       @change="currencyA.id && currencyB.id && currencyA.value && convert()"
-      type="number"
+      type="text"
+      @keyup="number(currencyA.value)"
       v-model="currencyA.value"
     />
     <!-- SELECT CURRENCY A -->
@@ -96,6 +97,9 @@ export default {
       } else {
         this.setError(true);
       }
+    },
+    number(event) {
+      this.currencyA.value = event.replace(/[^0-9.]/g, '').replace(/(\..?)\../g, '$1')
     },
 
     /**
