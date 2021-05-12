@@ -1,5 +1,9 @@
 
 <template>
+  <div class="errorApi" :class="apiError && 'show'">
+    <img src="../assets/piggy-bank.svg" width="60" alt="" />
+    <p>Erro ao conectar com API. <br />Tente mais tarde</p>
+  </div>
   <div class="converter">
     <!-- ERROR MESSAGE -->
     <div class="errorMsg" :class="error ? 'show' : ''">
@@ -58,11 +62,11 @@
 <script>
 export default {
   name: "Converter",
-
   data() {
     return {
       apiUrl: "https://free.currconv.com/api/v7/",
       apiKey: "bba7986b5cc69bcbd370",
+      apiError: false,
       currencyA: {
         id: "",
         value: "",
@@ -99,7 +103,9 @@ export default {
       }
     },
     number(event) {
-      this.currencyA.value = event.replace(/[^0-9.]/g, '').replace(/(\..?)\../g, '$1')
+      this.currencyA.value = event
+        .replace(/[^0-9.]/g, "")
+        .replace(/(\..?)\../g, "$1");
     },
 
     /**
@@ -134,12 +140,35 @@ export default {
       })
       .then((json) => {
         this.currencies = json.results;
-      });
+      })
+      .catch(() => (this.apiError = true));
   },
 };
 </script>
 
 <style scoped>
+.errorApi {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffffeb;
+  z-index: 99;
+  color: black;
+  text-align: center;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  flex-direction: column;
+}
+
+.errorApi.show {
+  opacity: 1;
+  visibility: visible;
+}
 .converter {
   padding: 30px;
   max-width: 300px;
