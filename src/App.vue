@@ -50,6 +50,8 @@ footer {
   background: rgba(0, 0, 0, 0.5);
   text-align: center;
   padding: 15px 0;
+  color:#fff;
+  font-size: 13px;
 }
 
 footer a {
